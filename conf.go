@@ -31,5 +31,9 @@ func Load(filename string, result interface{}) error {
 		return errors.New(msg)
 	}
 	dec := json.NewDecoder(file)
-	return dec.Decode(&result)
+	err = dec.Decode(&result)
+	if err != nil {
+		log.Println(err)
+	}
+	return err
 }
